@@ -1,0 +1,37 @@
+@font-face{font-family:futurept_b1;src:url('/reference/fonts/futurept_7a255.otf');font-display:block}@font-face{font-family:futurept_book;src:url('/reference/fonts/fptbook.otf');font-display:block}@font-face{font-family:futurept_medium;src:url('/reference/fonts/fptmed.otf');font-display:block}@font-face{font-family:futurept_demi;src:url('/reference/fonts/futurapt_demi.otf');font-display:block}
+html,body{background:#192a36;overflow:hidden}#bonkiocontainer{opacity:1}#simpleMenuContainer{display:block}#simpleMenuConainer_UIContainer{overflow:hidden}
+#arenaBackdrop{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none}
+#classic_mid{visibility:visible;display:flex;z-index:5;top:0;bottom:0;left:0;right:0;width:178px;height:380px;margin:auto;justify-content:space-between;gap:0}#classic_mid .classic_mid_buttons{position:static;font-family:futurept_book_fixed;font-size:18px;width:178px;margin:0 auto;box-shadow:2px 2px 3px #0006}#classic_mid_friendlist{background:#888!important}
+#pretty_bottom{display:none!important}#pretty_top{z-index:50}
+#roomListContainer{display:none}#roomListContainer.open{display:flex;visibility:visible;z-index:70}#roomListContainer.open #roomlist{visibility:visible;position:relative;flex:0 0 760px;top:65px;height:391px;margin:0;border:0;background:#d2dbde}#quickPlayWindow.open,#newswindow.open,#friendsContainer.open,#skinmanager.open,#settingsContainer.open,#guestContainer.open,#roomlistcreatewindowcontainer.open,#roomlistjoinpasswordwindowcontainer.open{visibility:visible;z-index:90}#newbonklobby.open{display:block;visibility:visible;z-index:80}#simpleMenuContainer.lobby #classic_mid,#simpleMenuContainer.lobby #arenaBackdrop{display:none}#simpleMenuContainer.awaiting-guest #classic_mid{visibility:hidden}#guest_colorinput{position:absolute;left:225px;top:235px;width:90px;height:34px;border:0;background:none}#guest_skinbox{background:var(--guest-color,#5555ff);border-radius:50%}#roomlistfilterwindow.open{display:block}#newbonklobby_votewindow_container.open{visibility:visible}#newbonklobby_votewindow_container.open #newbonklobby_votewindow{visibility:visible}.newbonklobby_votewindow_votebutton_selected{outline:3px solid #00a99d}#newbonklobby_teambuttonscontainer{display:none}#newbonklobby_mode_menu.open{display:flex}#newbonklobby_mode_menu .newbonklobby_settings_button{position:static;width:100%}#roomlistcreatewindowerror,#roomlistjoinpassworderror{color:#b3261e;font:13px futurept_book;text-align:center}.skinmanager_iconcontainer.selected .skinmanager_icon{outline:4px solid #00a99d}.skinmanager_iconcontainer[data-skin-color="#5555ff"] .skinmanager_icon{background:#5555ff}.skinmanager_iconcontainer[data-skin-color="#d33f49"] .skinmanager_icon{background:#d33f49}.skinmanager_iconcontainer[data-skin-color="#3fa34d"] .skinmanager_icon{background:#3fa34d}.skinmanager_iconcontainer[data-skin-color="#f0b429"] .skinmanager_icon{background:#f0b429}.skinmanager_iconcontainer[data-skin-color="#9c5de5"] .skinmanager_icon{background:#9c5de5}
+#roomlist_close{position:absolute;left:743px;top:-9px}#roomlisthidepasswordedcheckboxlabel{display:block;position:absolute;z-index:2;left:34px;top:9px;width:115px;height:22px;line-height:22px;white-space:nowrap;color:#fff;font:17px futurept_b1}#roomlisthidepasswordedcheckbox{position:absolute;left:-20px;top:4px;margin:0}#roomlisttableheadercontainer{top:39px}#roomlisttableheadercontainer>span{display:inline-block;overflow:hidden;vertical-align:top}#roomlisttableheader_roomname{width:228px;padding-left:8px;box-sizing:border-box}#roomlisttableheadercontainer>span+span{margin-left:3px}#roomlisttableheader_players{width:99px}#roomlisttableheader_mode{width:144px}#roomlisttableheader_password{width:76px}#roomlisttableheader_levelrequired{width:106px}#roomlisttableheader_distance{width:91px}#roomlisttable{width:100%;font-family:futurept_book;font-size:15px;border-collapse:collapse}#roomlisttable td:nth-child(1){width:228px;padding-left:8px}#roomlisttable td:nth-child(2){width:99px;text-align:center}#roomlisttable td:nth-child(3){width:144px;text-align:center}#roomlisttable td:nth-child(4){width:76px;text-align:center}#roomlisttable td:nth-child(5){width:106px;text-align:center}#roomlisttable td:nth-child(6){width:91px;text-align:center}#roomlistsearchinput{display:none}.roomlistbottombutton{position:absolute;top:calc(100% + 10px);width:90px;height:30px;line-height:30px;text-transform:none}#roomlistcreatebutton{left:0}#roomlistrefreshbutton{right:100px}#roomlistjoinbutton{right:0}#roomlistfilterbutton{right:200px;width:102px;padding:0;box-sizing:border-box}
+#prettymenu{z-index:30}.windowCloseButton{cursor:pointer}.redefineControls_selectionCell.waiting-for-key{background:#ffe69c!important;box-shadow:inset 0 0 0 2px #9b7b15}.newbonklobby_mapthumb{width:100%;height:100%;object-fit:cover}#newbonklobby_chat_content{overflow:auto;padding:35px 8px;box-sizing:border-box;font:14px futurept_book}.newbonklobby_playerentry{height:42px;padding:8px;font:16px futurept_book}.newbonklobby_playerentry_ready{float:right;color:#248b43}
+@media(max-width:760px){#bonkiocontainer{transform-origin:top left}#classic_mid{transform:scale(.85)}}
+/* The room list uses the game's responsive flex sizing, not a fixed-size panel. */
+#roomListContainer.open #roomlist{flex:1 1 730px;min-width:0;top:calc(13% - 10px);height:68%}
+#roomlist_close{left:auto;right:-9px}
+#roomlisttableheader_roomname,#roomlisttable td:nth-child(1){width:30%}
+#roomlisttableheader_players,#roomlisttable td:nth-child(2){width:13%}
+#roomlisttableheader_mode,#roomlisttable td:nth-child(3){width:19%}
+#roomlisttableheader_password,#roomlisttable td:nth-child(4){width:10%}
+#roomlisttableheader_levelrequired,#roomlisttable td:nth-child(5){width:14%}
+#roomlisttableheader_distance,#roomlisttable td:nth-child(6){width:12%}
+.roomlistcreatewindowinput{box-sizing:border-box;height:25px}
+#roomlistcreatewindow{top:16px}
+#roomlistcreatewindowerror{position:absolute;top:299px;left:10px;right:10px}
+#newbonklobby_mappreviewcontainer{width:117px;height:80px;overflow:hidden}
+.newbonklobby_mapthumb{display:block;width:117px;height:80px;object-fit:cover}
+.newbonklobby_playerentry{height:47px;padding:0;font:15px futurept_b1}
+.lobby-avatar{width:30px;height:30px;margin:3px;border-radius:50%;box-shadow:1px 1px 0 #0004}
+#newbonklobby_chat_content{padding:4px}
+#localLobbyMapWindow{display:none;position:absolute;z-index:110;left:0;right:0;top:55px;margin:auto;width:450px;max-width:90%;min-height:210px;background:#d2dbde;border-radius:7px}
+#localLobbyMapWindow.open{display:block}
+#localLobbyMapList{display:flex;flex-direction:column;gap:6px;padding:14px}
+#localLobbyMapList button{padding:8px;border:0;background:#795548;color:white;text-align:left;font:16px futurept_book;cursor:pointer}
+#localLobbyMapClose{cursor:pointer}
+
+/* Lobby chat, measured from the original's stylesheet. */
+.newbonklobby_chat_msg_colorbox{width:8px;height:8px;display:inline-block;margin-right:8px;border-radius:4px;margin-bottom:1px}
+.newbonklobby_chat_msg_name{font-family:futurept_b1;font-size:16px;color:#484848}
+.newbonklobby_chat_msg_txt{font-family:futurept_b1;font-size:16px;color:#000}
+.newbonklobby_chat_status{font-family:futurept_book;font-size:16px}

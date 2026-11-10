@@ -1,0 +1,6 @@
+alpha2s*.js
+deobfuscated
+invalid
+node_modules
+cache
+test

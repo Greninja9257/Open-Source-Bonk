@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>bonk.io open recreation</title>
+  <!-- The faces are declared in CSS the browser only reaches after parsing it, so text
+       painted before then used a fallback and reflowed when the real face landed. These
+       start the fetch with the document; font-display:block on each @font-face then holds
+       the text until it arrives rather than swapping it under the reader. Preloaded fonts
+       are fetched in CORS mode even same-origin, so crossorigin is required here or the
+       file is downloaded twice. -->
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/futurept_7a255.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptbook.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptmed.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/futurapt_demi.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptbook_fixed_5.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptb.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptl.otf">
+  <link rel="stylesheet" href="/reference/css/pagelayout.css">
+  <link rel="stylesheet" href="/reference/css/simplemenu.css">
+  <link rel="stylesheet" href="/reference/css/roomlist.css">
+  <link rel="stylesheet" href="/reference/css/newbonklobby.css">
+  <link rel="stylesheet" href="/reference/css/prettymenu.css">
+  <link rel="stylesheet" href="/reference/css/skineditor.css">
+  <link rel="stylesheet" href="/reference/css/classicactive.css">
+  <link rel="stylesheet" href="/reference/css/checkbox.css">
+  <link rel="stylesheet" href="/shell.css">
+  <link rel="stylesheet" href="/parity.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"></head>
+<body>
+<div id="pagecontainer">
+  <div id="bonkiocontainer">
+    <div id="newbonkgamecontainer">
+      <div id="simpleMenuContainer">
+        <div id="simpleMenuConainer_UIContainer">
+          <iframe id="arenaBackdrop" src="/game.html?preview=1" title="Live game preview" tabindex="-1" aria-hidden="true"></iframe>
+          <div id="guestContainer" class="windowShadow"><div id="guest_topbar" class="windowTopBar windowTopBar_classic">Guest Settings</div><div id="guest_skinbox"></div><div id="guest_namelabel">Choose Your Name</div><input type="text" id="guest_nametext" class="loginwindow_field fieldShadow" value="New Player" maxlength="15"><div id="guest_colorlabel">Color</div><input type="color" id="guest_colorinput" value="#5555ff"><div id="guestPlayButton" class="brownButton brownButton_classic buttonShadow thickerText">Play as Guest</div></div>
+          <div id="classic_mid">
+            <div id="classic_mid_tutorial" class="classic_mid_buttons brownButton_classic">Tutorial</div>
+            <div id="classic_mid_quickplay" class="classic_mid_buttons brownButton_classic">Quick Play</div>
+            <div id="classic_mid_customgame" class="classic_mid_buttons brownButton_classic">Custom Game</div>
+            <div id="classic_mid_news" class="classic_mid_buttons brownButton_classic">News</div>
+            <div id="classic_mid_skins" class="classic_mid_buttons brownButton_classic">Skins</div>
+            <div id="classic_mid_friendlist" class="classic_mid_buttons brownButton_classic">Friend List</div>
+          </div>
+
+          <div id="quickPlayWindow" class="windowShadow">
+            <div id="quickPlayWindowtopbar" class="windowTopBar windowTopBar_classic">Quick Play Mode Selection</div>
+            <div id="quickPlayWindow_close" class="windowCloseButton brownButton_classic buttonShadow"></div>
+            <div id="quickPlayWindowModeContainer">
+              <div id="quickPlayWindow_ClassicButton" class="quickPlayWindowModeDiv" data-quick-mode="Classic"><img src="/reference/graphics/thumb_classic_nb.jpg" class="quickPlayWindowModeThumb" alt=""><span class="quickPlayWindowText1">Classic</span><span id="quickPlayWindow_ClassicPlayerCount" class="quickPlayWindowText2">0 players online</span><span class="quickPlayWindowText3">The original Quick Play. A selection of classic maps.</span></div>
+              <div id="quickPlayWindow_ArrowsButton" class="quickPlayWindowModeDiv" data-quick-mode="Arrows"><img src="/reference/graphics/thumb_arrows_nb.jpg" class="quickPlayWindowModeThumb" alt=""><span class="quickPlayWindowText1">Arrows</span><span id="quickPlayWindow_ArrowsPlayerCount" class="quickPlayWindowText2">0 players online</span><span class="quickPlayWindowText3">Use the special key to charge up and fire arrows at your opponents.</span></div>
+              <div id="quickPlayWindow_GrappleButton" class="quickPlayWindowModeDiv" data-quick-mode="Grapple"><img src="/reference/graphics/thumb_grapple_nb.jpg" class="quickPlayWindowModeThumb" alt=""><span class="quickPlayWindowText1">Grapple</span><span id="quickPlayWindow_GrapplePlayerCount" class="quickPlayWindowText2">0 players online</span><span class="quickPlayWindowText3">Use the special key to swing around the map.</span></div>
+            </div>
+          </div>
+
+          <div id="newswindow" class="windowShadow"><div id="newswindow_topbar" class="windowTopBar windowTopBar_classic">News</div><div id="newswindow_white" class="windowShadow"><span id="newswindow_title"></span><span id="newswindow_content"></span></div><div id="news_close" class="windowCloseButton brownButton_classic buttonShadow"></div></div>
+          <div id="friendsContainer" class="windowShadow"><div id="friends_topbar" class="windowTopBar windowTopBar_classic">Friend List</div><div id="friends_close" class="windowCloseButton brownButton_classic buttonShadow"></div><div id="friends_scrollcontainer"><div id="friends_title_requests" class="friends_titles">Incoming Friend Requests</div><table id="friends_requests_table" class="friends_table"></table><div id="friends_title_online" class="friends_titles">Online Friends</div><table id="friends_online_table" class="friends_table"></table><div id="friends_title_offline" class="friends_titles">Offline Friends</div><table id="friends_offline_table" class="friends_table"></table></div></div>
+          <div id="skinmanager" class="windowShadow"><div class="windowTopBar windowTopBar_classic">Skin Manager</div><div id="skinmanager_allicons"><div id="skinmanager_skin1" class="skinmanager_iconcontainer" data-skin-color="#5555ff"><div id="skinmanager_skin1_icon" class="skinmanager_icon"></div><span class="skinmanager_activetext">Active</span></div><div id="skinmanager_skin2" class="skinmanager_iconcontainer" data-skin-color="#d33f49"><div id="skinmanager_skin2_icon" class="skinmanager_icon"></div><span class="skinmanager_activetext"></span></div><div id="skinmanager_skin3" class="skinmanager_iconcontainer" data-skin-color="#3fa34d"><div id="skinmanager_skin3_icon" class="skinmanager_icon"></div><span class="skinmanager_activetext"></span></div><div id="skinmanager_skin4" class="skinmanager_iconcontainer" data-skin-color="#f0b429"><div id="skinmanager_skin4_icon" class="skinmanager_icon"></div><span class="skinmanager_activetext"></span></div><div id="skinmanager_skin5" class="skinmanager_iconcontainer" data-skin-color="#9c5de5"><div id="skinmanager_skin5_icon" class="skinmanager_icon"></div><span class="skinmanager_activetext"></span></div></div><div id="skinmanager_setactive" class="brownButton brownButton_classic buttonShadow">Set Active</div><div id="skinmanager_edit" class="brownButton brownButton_classic buttonShadow">Edit</div><div id="skinmanager_close" class="windowCloseButton brownButton_classic buttonShadow"></div></div>
+
+          <div id="roomListContainer">
+            <div id="roomlistflexpadding"></div>
+            <div id="roomlist" class="roomlist_classic windowShadow">
+              <div id="roomlisttopbar" class="classicTopBar"></div><div id="roomlist_close" class="windowCloseButton brownButton brownButton_classic buttonShadow"></div>
+              <label id="roomlisthidepasswordedcheckboxlabel"><input id="roomlisthidepasswordedcheckbox" type="checkbox"> Hide Passworded</label>
+              <div id="roomlisttableheadercontainer"><span id="roomlisttableheader_roomname">ROOM NAME</span><span id="roomlisttableheader_players">PLAYERS</span><span id="roomlisttableheader_mode">MODE</span><span id="roomlisttableheader_password">PASSWORD</span><span id="roomlisttableheader_levelrequired">PLAYER LEVEL</span><span id="roomlisttableheader_distance">DISTANCE</span></div>
+              <div id="roomlistscrollbox" class="ROOMLIST"><table id="roomlisttable"><tbody></tbody></table></div>
+              <input id="roomlistsearchinput" placeholder="Search games">
+              <div id="roomliststatustext">Loading games…</div>
+              <div id="roomlistjoinbutton" class="roomlistbottombutton brownButton brownButton_classic buttonShadow">Join</div><div id="roomlistrefreshbutton" class="roomlistbottombutton brownButton brownButton_classic buttonShadow">Refresh</div><div id="roomlistfilterbutton" class="roomlistbottombutton_dynamic roomlistbottombutton brownButton brownButton_classic buttonShadow">Filter Modes</div><div id="roomlistcreatebutton" class="roomlistbottombutton brownButton brownButton_classic buttonShadow">Create</div>
+              <div id="roomlistfilterwindow" class="windowShadow">
+                <div id="roomlistfilterwindow_close" class="windowCloseButton brownButton brownButton_classic buttonShadow"></div>
+                <div id="roomlistfilterwindow_title">Show these modes</div>
+                <div class="roomlistfilterwindow_b"><input id="roomlistfilterwindow_check_classic" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="Classic" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_classic">Classic</label></div>
+                <div class="roomlistfilterwindow_a"><input id="roomlistfilterwindow_check_arrows" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="Arrows" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_arrows">Arrows</label></div>
+                <div class="roomlistfilterwindow_b"><input id="roomlistfilterwindow_check_deatharrows" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="Death Arrows" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_deatharrows">Death Arrows</label></div>
+                <div class="roomlistfilterwindow_a"><input id="roomlistfilterwindow_check_grapple" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="Grapple" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_grapple">Grapple</label></div>
+                <div class="roomlistfilterwindow_b"><input id="roomlistfilterwindow_check_football" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="Football" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_football">Football</label></div>
+                <div class="roomlistfilterwindow_a"><input id="roomlistfilterwindow_check_vtol" class="roomlistfilterwindowcheckbox" type="checkbox" data-mode-filter="VTOL" checked><label class="roomlistfilterwindowlabel" for="roomlistfilterwindow_check_vtol">VTOL</label></div>
+              </div>
+            </div>
+            <div id="roomlistflexpadding"></div>
+            <div id="roomlistcreatewindowcontainer"><div id="behindblocker"></div><div id="roomlistcreatewindow" class="windowShadow"><div class="windowTopBar windowTopBar_classic"><p id="roomlistcreatewindowtoptext">Create Game</p></div><div id="roomlist_create_close" class="windowCloseButton brownButton brownButton_classic buttonShadow"></div><div id="roomlistcreatewindowlabel1" class="roomlistcreatewindowlabel">Game name</div><input id="roomlistcreatewindowgamename" class="roomlistcreatewindowinput fieldShadow" maxlength="30"><div id="roomlistcreatewindowlabel2" class="roomlistcreatewindowlabel">Password (optional)</div><input id="roomlistcreatewindowpassword" class="roomlistcreatewindowinput fieldShadow" maxlength="30"><div id="roomlistcreatewindowlabel3" class="roomlistcreatewindowlabel">Max players</div><input id="roomlistcreatewindowmaxplayers" class="roomlistcreatewindowinput fieldShadow" value="8"><div id="roomlistcreatewindowlabel4" class="roomlistcreatewindowlabel">Min level</div><input id="roomlistcreatewindowminlevel" class="roomlistcreatewindowinput fieldShadow" value="0"><div id="roomlistcreatewindowlabel5" class="roomlistcreatewindowlabel">Max level</div><input id="roomlistcreatewindowmaxlevel" class="roomlistcreatewindowinput fieldShadow" value="999"><label id="roomlistcreatewindowunlisted" class="control control-checkbox"><div id="roomlistcreatewindowunlistedlabel" class="roomlistcreatewindowlabel">Unlisted room</div><input type="checkbox" id="roomlistcreatewindowunlistedcheckbox"><div class="control_indicator"></div></label><div id="roomlistcreatewindowerror"></div><div id="roomlistcreatecreatebutton" class="roomlistcreatebottombutton brownButton brownButton_classic buttonShadow">Create</div></div></div>
+            <div id="roomlistjoinpasswordwindowcontainer"><div id="behindblocker"></div><div id="roomlistjoinpasswordwindow" class="windowShadow"><div id="roomlistjoinpasswordtop" class="windowTopBar windowTopBar_classic">Password Required</div><div id="roomlistjoinpasswordwindowclose" class="windowCloseButton brownButton_classic buttonShadow"></div><div id="roomlistjoinpasswordwindowlabel">Password</div><input id="roomlistjoinpasswordtext" class="whiteInputField"><div id="roomlistjoinpassworderror"></div><div id="roomlistpassjoinbutton" class="roomlistpassbottombutton brownButton_classic buttonShadow">Join</div></div></div>
+          </div>
+
+          <div id="newbonklobby">
+            <div id="localLobbyMapWindow" class="windowShadow"><div class="windowTopBar windowTopBar_classic">Level Select</div><div id="localLobbyMapClose" class="windowCloseButton brownButton brownButton_classic buttonShadow"></div><div id="localLobbyMapList"></div></div>
+            <div id="newbonklobby_playerbox" class="windowShadow"><div class="newbonklobby_boxtop newbonklobby_boxtop_classic">Playing</div><div id="newbonklobby_playerbox_elementcontainer" class="newbonklobby_elementcontainer"><div id="newbonklobby_playerbox_leftelementcontainer"></div><div id="newbonklobby_playerbox_rightelementcontainer"></div><div id="newbonklobby_playerbox_middleline"></div></div><div id="newbonklobby_ffabutton" class="brownButton brownButton_classic buttonShadow">Join</div><div id="newbonklobby_teambuttonscontainer"><div id="newbonklobby_bluebutton" class="newbonklobby_teambutton brownButton brownButton_classic buttonShadow">Join Blue</div><div id="newbonklobby_redbutton" class="newbonklobby_teambutton brownButton brownButton_classic buttonShadow">Join Red</div><div id="newbonklobby_greenbutton" class="newbonklobby_teambutton brownButton brownButton_classic buttonShadow">Join Green</div><div id="newbonklobby_yellowbutton" class="newbonklobby_teambutton brownButton brownButton_classic buttonShadow">Join Yellow</div></div></div>
+            <div id="newbonklobby_specbox" class="windowShadow"><div class="newbonklobby_boxtop newbonklobby_boxtop_classic">Spectating</div><div id="newbonklobby_specbox_elementcontainer" class="newbonklobby_elementcontainer"></div><div id="newbonklobby_specbutton" class="brownButton brownButton_classic buttonShadow">Spectate</div></div>
+            <div id="newbonklobby_chatbox" class="windowShadow"><div class="newbonklobby_boxtop newbonklobby_boxtop_classic">Chat</div><div id="newbonklobby_chat_lowerline"></div><div id="newbonklobby_chat_lowerinstruction">Press enter to send a message</div><input id="newbonklobby_chat_input" type="text" autocomplete="off" maxlength="120"><div id="newbonklobby_chat_content"></div></div>
+            <div id="newbonklobby_teamlockbutton" class="brownButton brownButton_classic buttonShadow" title="Lock teams"></div><div id="newbonklobby_tooltip"></div><div id="newbonklobby_votewindow_container"><div id="newbonklobby_votewindow_fade"></div><div id="newbonklobby_votewindow" class="windowShadow"><div id="newbonklobby_votewindow_close" class="windowCloseButton brownButton brownButton_classic buttonShadow"></div><div id="newbonklobby_votewindow_top">Map Vote</div><div id="newbonklobby_votewindow_thumbcontainer"></div><div id="newbonklobby_votewindow_maptitle"><span id="newbonklobby_votewindow_maptitle_name"></span><span id="newbonklobby_votewindow_maptitle_by"> by </span><span id="newbonklobby_votewindow_maptitle_author"></span></div><div id="newbonklobby_votewindow_mapauthor"></div><div id="newbonklobby_votewindow_flexcontainer"><div id="newbonklobby_votewindow_votebutton_up" class="newbonklobby_votewindow_votebutton"></div><div id="newbonklobby_votewindow_votecount_up">0</div><div id="newbonklobby_votewindow_votebutton_down" class="newbonklobby_votewindow_votebutton"></div><div id="newbonklobby_votewindow_votecount_down">0</div><div id="newbonklobby_votewindow_votebutton_favourite" class="newbonklobby_votewindow_votebutton"></div></div></div></div><div id="newbonklobby_settingsbox" class="windowShadow"><div class="newbonklobby_boxtop newbonklobby_boxtop_classic">Game Settings</div><div id="newbonklobby_modetext">Classic</div><div id="newbonklobby_mappreviewcontainer"></div><div id="newbonklobby_maptext">Arena</div><div id="newbonklobby_mapauthortext"></div><div id="newbonklobby_roundslabel">Rounds to win:</div><input id="newbonklobby_roundsinput" type="text" value="3" maxlength="2" autocomplete="off"><div id="newbonklobby_startbutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow">Start</div><div id="newbonklobby_readybutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow">Ready</div><div id="newbonklobby_teamsbutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow"><span id="newbonklobby_teams_middletext">Teams Off</span></div><div id="newbonklobby_mapbutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow" aria-disabled="true" title="Map selection is not implemented in this build">Map</div><div id="newbonklobby_modebutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow">Mode</div><div id="newbonklobby_editorbutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow" aria-disabled="true" title="The map editor is not implemented in this build">Editor</div><div id="newbonklobby_linkbutton" class="newbonklobby_settings_button brownButton brownButton_classic buttonShadow" title="Copy room link"></div><div id="newbonklobby_mode_menu" class="newbonklobby_mode_menu"></div></div>
+          </div>
+
+        </div>
+      </div>
+
+      <div id="prettymenu">
+        <div id="pretty_top"><div id="pretty_top_bar" class="niceborderbottom"><canvas id="pretty_top_small_preview" width="33" height="33"></canvas>
+<div id="pretty_top_name" class="niceborderright">New Player</div>
+<div id="pretty_top_level" class="niceborderright">Guest</div>
+<div id="pretty_top_playercount" class="niceborderright">0 online</div><div id="pretty_top_help" class="pretty_top_button niceborderleft"></div><div id="pretty_top_replay" class="pretty_top_button niceborderleft" title="Replays unavailable in this build"></div><div id="pretty_top_volume" class="pretty_top_button niceborderleft"></div><div id="pretty_top_settings" class="pretty_top_button niceborderleft"></div><div id="pretty_top_exit" class="pretty_top_button niceborderleft"></div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/navigation.js"></script><script src="/controls.js"></script><script src="/socket.io/socket.io.js"></script><script src="/profanity.js"></script><script src="/shell.js"></script><script src="/top-bar.js"></script><script src="/settings.js"></script>
+</body>
+</html>

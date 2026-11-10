@@ -1,0 +1,20 @@
+{
+  "name": "bonk-open-recreation",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reference-driven open-source Bonk.io recreation",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "lz-string": "^1.5.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "socket.io-client": "^4.8.1"
+  }
+}

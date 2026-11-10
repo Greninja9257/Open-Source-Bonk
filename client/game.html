@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>bonk.io recreation — game</title>
+  <!-- The faces are declared in CSS the browser only reaches after parsing it, so text
+       painted before then used a fallback and reflowed when the real face landed. These
+       start the fetch with the document; font-display:block on each @font-face then holds
+       the text until it arrives rather than swapping it under the reader. Preloaded fonts
+       are fetched in CORS mode even same-origin, so crossorigin is required here or the
+       file is downloaded twice. -->
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/futurept_7a255.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptbook.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptmed.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptbook_fixed_5.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptb.otf">
+  <link rel="preload" as="font" type="font/otf" crossorigin href="/reference/fonts/fptl.otf">
+  <link rel="stylesheet" href="/reference/css/pagelayout.css"><link rel="stylesheet" href="/reference/css/simplemenu.css"><link rel="stylesheet" href="/reference/css/prettymenu.css"><link rel="stylesheet" href="/reference/css/ingamechat.css"><link rel="stylesheet" href="/reference/css/classicactive.css"><link rel="stylesheet" href="/game.css"><link rel="stylesheet" href="/reference/css/checkbox.css"><link rel="stylesheet" href="/parity.css">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png"></head>
+<body>
+  <script src="/navigation.js"></script>
+  <div id="pagecontainer"><div id="bonkiocontainer"><div id="newbonkgamecontainer"><div id="gameMount"></div><div id="fpsCounter"></div><div id="ingamecountdown"><div id="ingamecountdown_top">Round starts in</div><div id="ingamecountdown_text"></div></div><div id="ingamewinner"><div id="ingamewinner_skin"><div id="ingamewinner_skin_skin"></div><svg id="ingamewinner_skin_x" width="200" height="200"><circle cx="100" cy="91" r="82" stroke="white" stroke-width="5" fill="none" /></svg></div><div id="ingamewinner_top"></div><div id="ingamewinner_bottom"></div><div id="ingamewinner_scores"><div id="ingamewinner_scores_top"></div><div id="ingamewinner_scores_left"></div><div id="ingamewinner_scores_right"></div></div></div><div id="prettymenu"><div id="pretty_top"><div id="pretty_top_bar" class="niceborderbottom"><canvas id="pretty_top_small_preview" width="33" height="33"></canvas>
+<div id="pretty_top_name" class="niceborderright">New Player</div>
+<div id="pretty_top_level" class="niceborderright">Guest</div>
+<div id="pretty_top_playercount" class="niceborderright"></div><div id="pretty_top_help" class="pretty_top_button niceborderleft"></div><div id="pretty_top_replay" class="pretty_top_button niceborderleft" title="Replays unavailable in this build"></div><div id="pretty_top_volume" class="pretty_top_button niceborderleft"></div><div id="pretty_top_settings" class="pretty_top_button niceborderleft"></div><div id="pretty_top_exit" class="pretty_top_button niceborderleft"></div></div></div></div><div id="ingamechatbox"><div id="ingamechatcontent"></div><input id="ingamechatinputtext" maxlength="120" autocomplete="off"></div><div id="leaveconfirmwindowcontainer"><div id="behindblocker"></div><div id="leaveconfirmwindow" class="windowShadow"><div id="leaveconfirmwindow_top">Leave Game?</div><div id="leaveconfirmwindow_text1">You are about to leave this game.</div><div id="leaveconfirmwindow_text2">Are you sure?</div><div id="leaveconfirmwindow_cancelbutton" class="brownButton brownButton_classic buttonShadow">Cancel</div><div id="leaveconfirmwindow_okbutton" class="brownButton brownButton_classic buttonShadow">Ok</div></div></div></div></div></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/engine/libraries/timesync.min.js"></script><script src="/engine/libraries/Box2D.js"></script><script src="/engine/libraries/pixi.min.js"></script>
+  <script>const gameParams=new URLSearchParams(location.search);const previewMode=gameParams.get('preview')==='1';const preloadMode=gameParams.get('preload')==='1';const roomId=gameParams.get('room')||'quick-classic';window.io=(function(base){return function(url,opts){if(preloadMode){const inert={on(){return inert},off(){return inert},emit(){return inert},once(){return inert},disconnect(){return inert},close(){return inert},connected:false,id:null};return inert}opts=opts||{};opts.auth={name:sessionStorage.getItem('bonkName')||'New Player',color:sessionStorage.getItem('bonkColor')||'#5555ff',team:sessionStorage.getItem('bonkLobbyTeam'),hostToken:sessionStorage.getItem('bonkHostToken'),preview:previewMode,roomId};return base(url,opts)}})(window.io);</script>
+  <script src="/engine/math.js"></script><script src="/controls.js"></script><script src="/inputs.js"></script><script src="/engine/graphics.js"></script><script>BonkGraphics.prototype.render=function(state){this.scaleRatio=1;this.renderMap(state);this.renderDiscs(state)};</script><script src="/map-graphics.js"></script><script src="/physics.js"></script><script src="/map-collision.js"></script><script src="/mode-runtime.js"></script><script src="/match.js"></script><script src="/engine/networking.js"></script><script src="/game-loop.js"></script>
+  <script src="/profanity.js"></script><script src="/game-ui.js"></script><script src="/top-bar.js"></script><script src="/settings.js"></script>
+  <script src="/game-runtime.js"></script>
+</body>
+</html>

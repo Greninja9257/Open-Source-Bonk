@@ -1,0 +1,18 @@
+/* Shared viewport and UI rules; reference styles supply control appearance. */
+@font-face{font-family:futurept_bold;src:url('/reference/fonts/fptb.otf');font-display:block}
+@font-face{font-family:futurept_light;src:url('/reference/fonts/fptl.otf');font-display:block}
+@font-face{font-family:futurept_book_fixed;src:url('/reference/fonts/fptbook_fixed_5.otf');font-display:block}
+/* The frame fills the window. UI windows inside keep their native pixel sizes, as in the
+   original; only the game canvas scales. The original's calc(100% - 360px) reserves width
+   for the surrounding site, which this build does not have. */
+#bonkiocontainer{width:100%;height:100%;border:0;box-sizing:border-box;opacity:1}
+#classic_mid{top:0;bottom:0;left:0;right:0;margin:auto;width:178px;height:380px;transform:none}
+#classic_mid .classic_mid_buttons{box-sizing:content-box;font-family:futurept_book_fixed;font-size:18px}
+#pretty_top_name{min-width:0;padding-left:10px;padding-right:15px}
+#settingsContainer{z-index:100}
+#settingsContainer.open{visibility:visible}
+.settings_profanity_container,.settings_fps_container{position:absolute}
+#redefineControls_table td:first-child{width:17%}
+#redefineControls_table td:not(:first-child){width:27%}
+#pretty_top_replay[aria-disabled=true]{cursor:default}
+@media(max-height:430px){#classic_mid{height:calc(100% - 45px);top:35px}.classic_mid_buttons{flex-shrink:1}}
